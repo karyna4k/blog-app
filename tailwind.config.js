@@ -19,9 +19,9 @@ module.exports = {
           '2xl': '6rem',
         },
       },
-      fontFamily: {
-        sans: ['Montserrat', 'sans-serif'],
-      },
+      // fontFamily: {
+      //   sans: ['Merriweather Sans', 'sans-serif'],
+      // },
       lineHeight: {
         '0': 1,
         '1': 1.1,
