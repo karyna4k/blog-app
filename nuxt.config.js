@@ -22,25 +22,15 @@ export default {
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      {
-        rel: 'preconnect',
-        href: 'https://fonts.googleapis.com',
-      },
-      {
-        rel: 'preconnect',
-        href: 'https://fonts.gstatic.com',
-      },
-      {
-        rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap',
-      },
-    ],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ['@/assets/css/main.css', '@/assets/scss/main.scss'],
+  css: [
+    '@/assets/css/main.css',
+    '@/assets/css/fonts.css',
+    '@/assets/scss/main.scss',
+  ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
@@ -80,9 +70,12 @@ export default {
           for (const key in res.data) {
             postsArray.push({ ...res.data[key], id: key })
           }
+
           // Routes
           return postsArray.map((post) => {
-            return '/posts/' + post.id, '/create/' + post.id
+            const posts = '/posts/' + post.id
+            const create = '/create/' + post.id
+            return { posts, create }
           })
         })
     },
