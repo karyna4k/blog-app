@@ -1,21 +1,17 @@
 <template>
   <div class="wrapper-content wrapper-content--fixed">
-    <app-promo />
-
     <blog-post-list :posts="postsLoaded">
-      <h2>Последние добавленные</h2>
+      <h1>Посты</h1>
     </blog-post-list>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'IndexPage',
+  name: 'PostsPage',
   components: {
-    AppPromo: () => import('~/components/AppPromo.vue'),
     BlogPostList: () => import('~/components/blog/PostList.vue'),
   },
-
   head() {
     const title = 'My blog'
     const descr = 'My blog with Nuxt.js!'
@@ -42,8 +38,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.wrapper-content {
-  @apply space-y-14;
-}
-</style>
+<style lang="scss" scoped></style>
