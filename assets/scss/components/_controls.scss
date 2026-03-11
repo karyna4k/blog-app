@@ -1,18 +1,15 @@
+@use '../utils/mixins' as mixins;
+
 label {
-  display: block;
-  font-size: 16px;
-  margin-bottom: 10px;
-  text-align: center;
+  @apply block ml-5 mb-1.5 font-semibold text-gray-700;
 }
-input {
-  padding: 16px 26px;
-  margin-bottom: 30px;
-  border-radius: 20px;
-}
+
+input,
 textarea {
-  padding: 30px 27px;
-  border-radius: 14px;
+  @apply w-full px-5 py-3.5 rounded-3xl border border-solid border-violet-500 focus-visible:outline-violet-600;
 }
-input, textarea {
-  width: 100%;
+
+textarea {
+  @apply resize-none;
+  @include mixins.set-height(7rem);
 }

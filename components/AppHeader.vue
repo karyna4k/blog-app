@@ -3,18 +3,18 @@
     <div class="navbar">
       <div class="container">
         <div class="navbar-content">
-          <nuxt-link class="logo h1" :to="{ name: 'index' }">
+          <NuxtLink class="logo h1" :to="{ name: 'index' }">
             WorldSteps
-          </nuxt-link>
+          </NuxtLink>
           <ul class="navbar-list">
             <li v-for="link in links" :key="link.title" class="navbar-item">
-              <nuxt-link
+              <NuxtLink
                 class="navbar-link"
                 :title="link.title"
                 :to="{ name: link.name }"
               >
                 {{ link.title }}
-              </nuxt-link>
+              </NuxtLink>
             </li>
           </ul>
         </div>

@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link class="post-preview" :to="`/posts/${post.id}`">
+  <NuxtLink class="post-preview" :to="`/posts/${post.id}`">
     <div class="post-preview-top">
       <img class="post-preview-img" :src="post.img" :alt="post.title" />
     </div>
@@ -11,7 +11,7 @@
         {{ post.descr }}
       </p>
     </div>
-  </nuxt-link>
+  </NuxtLink>
 </template>
 
 <script>

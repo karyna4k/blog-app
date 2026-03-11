@@ -4,19 +4,16 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'BlogCreate',
-  components: {
-    BlogNewPost: () => import('~/components/blog/NewPost.vue'),
-  },
-  methods: {
-    onSubmit(post) {
-      this.$store.dispatch('addPost', post).then(() => {
-        this.$router.push('/')
-      })
-    },
-  },
+<script setup>
+import { useRouter } from '#imports'
+import { usePostsStore } from '@/stores/posts'
+
+const postsStore = usePostsStore()
+const router = useRouter()
+
+async function onSubmit(post) {
+  await postsStore.addPost(post)
+  await router.push('/')
 }
 </script>
 

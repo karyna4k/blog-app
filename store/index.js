@@ -32,7 +32,7 @@ export const actions = {
   async initPosts({ commit }, context) {
     try {
       const res = await axios.get(
-        'https://blog-nuxt-test-default-rtdb.firebaseio.com/posts.json'
+        'https://blog-nuxt-test-default-rtdb.firebaseio.com/posts.json',
       )
       const postsArray = []
 
@@ -48,7 +48,7 @@ export const actions = {
     try {
       const res = await axios.post(
         'https://blog-nuxt-test-default-rtdb.firebaseio.com/posts.json',
-        post
+        post,
       )
       commit('addPost', { ...post, id: res.data.name })
     } catch (e) {
@@ -59,7 +59,7 @@ export const actions = {
     return await axios
       .put(
         `https://blog-nuxt-test-default-rtdb.firebaseio.com/posts/${post.id}.json`,
-        post
+        post,
       )
       .then((res) => {
         commit('editPost', post)
@@ -68,7 +68,7 @@ export const actions = {
   async deletePost({ commit }, id) {
     try {
       await axios.delete(
-        `https://blog-nuxt-test-default-rtdb.firebaseio.com/posts/${id}.json`
+        `https://blog-nuxt-test-default-rtdb.firebaseio.com/posts/${id}.json`,
       )
       commit('DELETE_POST', id)
     } catch (error) {

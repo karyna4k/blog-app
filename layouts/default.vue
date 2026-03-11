@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <app-header />
-    <nuxt />
+    <NuxtPage />
   </div>
 </template>
 

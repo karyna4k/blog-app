@@ -4,50 +4,47 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import axios from 'axios'
+import { computed } from 'vue'
+import { useAsyncData, useHead, useRoute, useRouter } from '#imports'
+import { usePostsStore } from '@/stores/posts'
 
-export default {
-  name: 'BlogEdit',
-  components: {
-    BlogNewPost: () => import('~/components/blog/NewPost.vue'),
-  },
-  asyncData({ params }) {
-    return axios
-      .get(
-        `https://blog-nuxt-test-default-rtdb.firebaseio.com/posts/${params.id}.json`
-      )
-      .then((res) => {
-        return {
-          post: { ...res.data, id: params.id },
-        }
-      })
-      .catch((error) => console.error(error))
-  },
-  head() {
-    const title = this.post.title
-    const descr = this.post.descr
-    const img = this.post.img
-    const type = 'article'
+const postsStore = usePostsStore()
+const router = useRouter()
+const route = useRoute()
 
-    return {
-      title,
-      meta: [
-        { hid: 'og: title', name: 'og: title', content: title },
-        { hid: 'description', name: 'description', content: descr },
-        { hid: 'og:description', name: 'og:description', content: descr },
-        { hid: 'og:type', name: 'og:type', content: type },
-        { hid: 'og:img', name: 'og:img', content: img },
-      ],
-    }
-  },
-  methods: {
-    onSubmit(post) {
-      this.$store.dispatch('editPost', post).then(() => {
-        this.$router.push(`/posts/${post.id}`)
-      })
-    },
-  },
+const { data } = await useAsyncData(async () => {
+  const res = await axios.get(
+    `https://blog-nuxt-test-default-rtdb.firebaseio.com/posts/${route.params.id}.json`,
+  )
+  return { ...res.data, id: route.params.id }
+})
+
+const post = computed(() => data.value)
+
+useHead(() => {
+  const p = post.value || {}
+  const title = p.title
+  const descr = p.descr
+  const img = p.img
+  const type = 'article'
+
+  return {
+    title,
+    meta: [
+      { hid: 'og: title', name: 'og: title', content: title },
+      { hid: 'description', name: 'description', content: descr },
+      { hid: 'og:description', name: 'og:description', content: descr },
+      { hid: 'og:type', name: 'og:type', content: type },
+      { hid: 'og:img', name: 'og:img', content: img },
+    ],
+  }
+})
+
+async function onSubmit(postPayload) {
+  await postsStore.editPost(postPayload)
+  await router.push(`/posts/${postPayload.id}`)
 }
 </script>
 
