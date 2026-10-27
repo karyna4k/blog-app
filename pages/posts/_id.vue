@@ -5,7 +5,6 @@
 </template>
 
 <script setup>
-import axios from 'axios'
 import { computed } from 'vue'
 import { useAsyncData, useHead, useRoute, useRouter } from '#imports'
 import { usePostsStore } from '@/stores/posts'
@@ -14,12 +13,11 @@ const postsStore = usePostsStore()
 const router = useRouter()
 const route = useRoute()
 
-const { data } = await useAsyncData(async () => {
-  const res = await axios.get(
+const { data } = await useAsyncData(() =>
+  $fetch(
     `https://blog-nuxt-test-default-rtdb.firebaseio.com/posts/${route.params.id}.json`,
-  )
-  return res.data
-})
+  ),
+)
 
 const post = computed(() => data.value)
 
