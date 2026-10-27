@@ -13,9 +13,8 @@ It is a blog. You can view, add, edit and delete articles.
 
 ## Stack
 
-- [Nuxt 2](https://v2.nuxt.com/)
-- [Vuex 3](https://v3.vuex.vuejs.org/)
-- [Axios](https://axios-http.com/docs/intro)
+- [Nuxt 4](https://nuxt.com/)
+- [Pinia](https://pinia.vuejs.org/)
 - [SCSS](https://sass-lang.com/)
 - [Tailwind](https://tailwindcss.com/)
 - [Firebase](https://firebase.google.com/)
@@ -39,7 +38,7 @@ $ npm run generate
 
 ### Requirements
 
-To install and run the project, you need [NodeJS](https://nodejs.org/) v16+.
+To install and run the project, you need [NodeJS](https://nodejs.org/) v22.22.3+.
 
 ## To do
 
