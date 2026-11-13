@@ -16,7 +16,7 @@
     "lintfix": "prettier --write --list-different . && npm run lint:js -- --fix"
   },
   "dependencies": {
-    "nuxt": "^4.6.3",
+    "nuxt": "^4.6.4",
     "pinia": "^4.1.0",
     "vue": "^3.5.44"
   },
